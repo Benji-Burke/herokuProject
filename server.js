@@ -15,23 +15,25 @@ app.use(methodOverride('_method'));
 
 
 //html
+app.use(express.static('public'))
 
 
 //Data
-const Post = require('./models/posts.js');
-app.use(express.static('public'))
+const PostController = require('./controllers/posts.js');
+app.use('/blogs', PostController);
+const Code = require('./models/code.js');
 
 
 //port
 const PORT =process.env.PORT || 3000;
-
-
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/blog'
-
 // Connect to Mongo
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true},() =>{
     console.log('we are connected YO')
 });
+
+
+
 
 
 
@@ -43,39 +45,10 @@ app.get('/', (req, res) =>{
 });
 
 
-//index
-app.get('/blogs', (req, res)=> {
-    Post.find({}, (error, allPosts) =>{
-        res.render('index.ejs', {
-            post: allPosts
-        })
-        
-    })
-})
-
-
-
-// new page of posts add to show
-app.get('/blogs/new', (req, res)=>{
-    res.render('new.ejs')
-});
-
-
-//post(create)
-app.post('/blogs/', (req, res)=>{
-    console.log(req.body)
-    Post.create(req.body, (error, createdPost) =>{
-        if (error) {
-            res.send(error)
-        } else {
-            res.redirect('/blogs')
-        }
-    })
-})
 //new page for codes
-const Code = require('./models/code.js');
 
-app.get('/blogs/code',(req, res)=>{
+//index of Code page
+app.get('/code',(req, res)=>{
     Code.find({}, (error, allCode) =>{
         res.render('code.ejs', {  
             code: allCode
@@ -83,86 +56,46 @@ app.get('/blogs/code',(req, res)=>{
         
     })
 })
-//post create codee
-app.post('/blogs/code', (req, res)=>{
+
+//show newCode
+app.get('/newCode', (req, res) =>{
+    res.render('newCode.ejs')
+})
+
+// //post create codee
+app.post('/code', (req, res)=>{
     Code.create(req.body, (error, createdCode) =>{
         if(error) {
             res.send(error)
         } else {
-            res.redirect('/blogs/code')
-        }
-    })
-})
-//show newCode
-app.get('/blogs/newCode', (req, res) =>{
-    res.render('newCode.ejs')
-})
-
-
-
-//post
-//show
-app.get('/blogs/:id', (req, res)=>{
-    Post.findById(req.params.id, (err, foundPost) =>{
-        res.render('show.ejs', {
-            post: foundPost
-        })
-    })
-})
-
-// delete
-app.delete('/blogs/:id', (req, res)=>{
-    Post.findByIdAndRemove(req.params.id, (err, deletedPost)=>{
-        if (err) {
-            console.log(err)
-        } else{
-            res.redirect('/blogs');
-            
-        }
-    })
-})
-//edit
-app.get('/blogs/:id/edit', (req, res)=>{
-    Post.findById(req.params.id, (err, foundPost)=>{
-        if (err) {
-            console.log(err)
-        } else {
-            res.render('edit.ejs', {
-                post: foundPost
-            });
+            res.redirect('/code')
         }
     })
 })
 
 
-
-
-//put
-app.put('/blogs/:id', (req, res)=>{
-    Post.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        { new: true },
-        (err,updatedPost) =>{
-            let blogId = req.params.id;
-            if (err) {
-                console.log(err)
-            } else {
-                res.redirect(`/blogs/${blogId}`)
-            }
-        }
-        )
-    })
     ///code show
-    app.get('/blogs/code/:id', (req, res)=>{
+    app.get('/code/:id', (req, res)=>{
         Code.findById(req.params.id, (err, foundCode)=>{
-            res.render('code.ejs',{
+            res.render('codeShow.ejs',{
                 code: foundCode
             })
         })
     })
+
+    // delete
+    app.delete('/code/:id', (req, res)=>{
+        Code.findByIdAndRemove(req.params.id, (err, deletedCode)=>{
+            if (err) {
+                console.log(err)
+            } else {
+                res.redirect('/code')
+            }
+        })
+    })
+
     //put code
-    app.put('/blogs/code/:id', (req, res)=>{
+    app.put('/code/:id', (req, res)=>{
         Post.findByIdAndUpdate(
             req.params.id,
             req.body,
@@ -172,7 +105,7 @@ app.put('/blogs/:id', (req, res)=>{
                 if (err) {
                     console.log(err)
                 } else {
-                    res.redirect(`/blogs/code/${codeId}`)
+                    res.redirect(`/code/${codeId}`)
                 }
             }
             )
