@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+        <div class="header">
+                <!-- title -->
+                <div class="header-title">
+                    <img src="" alt="blog logo">
+                    <div>
+                        <h1>Coding Decoded</h1>
+                    </div>
+                </div>
+                <!-- navigation -->
+                <nav>
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blogs/post">Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blogs/new">POST</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blogs/code">Codes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blogs/forum">Forum</a>
+                        </li>
+                    </ul>
+
+                    <h1>Code Snippits</h1>
+                </nav>
+                <a class="nav-link" href="/blogs/newCode">Add Code</a>
+            </div>
+            </div>
+            <div class="container-fluid">
+                <% for (let i =0; i < code.length; i++) { %>
+                  <%=  code[i].content1; %>
+                <a href="/blogs/<%=code[i].id; %>"> <br>
+                    <%= code[i].code; %> <br>
+                    <%= code[i].content; %>
+                </a>
+        
+        
+                <!-- <form action="/blogs/<%=code[i].id; %>?_method=DELETE" method="POST">
+                    <input type="submit" value="DELETE" />
+        
+                </form> -->
+                <%  } %></a>
+        
+            </div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+* {
+    border: 1px solid red;
+    margin: 0;
+	padding: 0;
+	background-color: silver;
+ 
+}
+
+.container-fluid {
+	text-align: center;
+	padding-top: 20px;
+	
+}
+
+@media (min-width: 576px) { 
+
+body {
+	text-align: center }
+}

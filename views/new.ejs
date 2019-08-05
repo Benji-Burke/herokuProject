@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/add.css"/>
+
 </head>
 <body>
     <h1>Add a Post</h1>
     <form action="/blogs" id="usrArticle" method="POST">
         name: <input type="text" name="name"><br>
         author: <input type="text" name="author">
-        <textarea name="content" form="usrArticle">Enter text here...</textarea>
+        tags: <input type="text" name="tags">
+        <textarea name="content" form="usrArticle" id="textArea" placeholder="Enter Text Here..."></textarea>
         <input type="submit">
     </form>
 

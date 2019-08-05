@@ -5,27 +5,33 @@ const app = express();
 const methodOverride = require('method-override');
 
 //middleware
-app.use(express.urlencoded({extended: false}))
-app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}))
+
 app.use(express.json());
 app.use(methodOverride('_method'));
 
 
+
+
+
+//html
+
+
 //Data
 const Post = require('./models/posts.js');
+app.use(express.static('public'))
 
 
 //port
 const PORT =process.env.PORT || 3000;
 
-// Database
+
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/blog'
 
 // Connect to Mongo
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true},() =>{
     console.log('we are connected YO')
 });
-
 
 
 
@@ -42,16 +48,18 @@ app.get('/blogs', (req, res)=> {
     Post.find({}, (error, allPosts) =>{
         res.render('index.ejs', {
             post: allPosts
-    })
+        })
         
     })
 })
 
 
-// new page
+
+// new page of posts add to show
 app.get('/blogs/new', (req, res)=>{
     res.render('new.ejs')
 });
+
 
 //post(create)
 app.post('/blogs/', (req, res)=>{
@@ -62,10 +70,37 @@ app.post('/blogs/', (req, res)=>{
         } else {
             res.redirect('/blogs')
         }
+    })
+})
+//new page for codes
+const Code = require('./models/code.js');
+
+app.get('/blogs/code',(req, res)=>{
+    Code.find({}, (error, allCode) =>{
+        res.render('code.ejs', {  
+            code: allCode
+        })
         
     })
+})
+//post create codee
+app.post('/blogs/code', (req, res)=>{
+    Code.create(req.body, (error, createdCode) =>{
+        if(error) {
+            res.send(error)
+        } else {
+            res.redirect('/blogs/code')
+        }
+    })
+})
+//show newCode
+app.get('/blogs/newCode', (req, res) =>{
+    res.render('newCode.ejs')
+})
 
-});  
+
+
+//post
 //show
 app.get('/blogs/:id', (req, res)=>{
     Post.findById(req.params.id, (err, foundPost) =>{
@@ -85,7 +120,7 @@ app.delete('/blogs/:id', (req, res)=>{
             
         }
     })
-});
+})
 //edit
 app.get('/blogs/:id/edit', (req, res)=>{
     Post.findById(req.params.id, (err, foundPost)=>{
@@ -116,23 +151,37 @@ app.put('/blogs/:id', (req, res)=>{
                 res.redirect(`/blogs/${blogId}`)
             }
         }
-    )
-})
-
-
-const seed = require('./models/seed.js');
-const User = require('./models/posts.js');
-
-app.get('/seedAgents', (req, res) => {
-    // encrypts the given seed passwords
-    // seeds the data
-    User.create(seed, (err, createdUsers) => {
-      // logs created users
-      console.log(createdUsers);
-      // redirects to index
-      res.redirect('/blogs');
-    });
-  });
-
-// listener
-app.listen(PORT, () => console.log('listening on the pprt', PORT));
+        )
+    })
+    ///code show
+    app.get('/blogs/code/:id', (req, res)=>{
+        Code.findById(req.params.id, (err, foundCode)=>{
+            res.render('code.ejs',{
+                code: foundCode
+            })
+        })
+    })
+    //put code
+    app.put('/blogs/code/:id', (req, res)=>{
+        Post.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true },
+            (err,updatedCode) =>{
+                let codeId = req.params.id;
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.redirect(`/blogs/code/${codeId}`)
+                }
+            }
+            )
+        })
+        
+        
+        
+        
+        
+        app.listen(PORT, () => {
+            console.log('listening on ', PORT);
+});
