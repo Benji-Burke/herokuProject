@@ -21,7 +21,10 @@ app.use(express.static('public'))
 //Data
 const PostController = require('./controllers/posts.js');
 app.use('/blogs', PostController);
-const Code = require('./models/code.js');
+
+
+const CodeController = require('./controllers/codes.js');
+app.use('/code', CodeController);
 
 
 //port
@@ -47,69 +50,7 @@ app.get('/', (req, res) =>{
 
 //new page for codes
 
-//index of Code page
-app.get('/code',(req, res)=>{
-    Code.find({}, (error, allCode) =>{
-        res.render('code.ejs', {  
-            code: allCode
-        })
-        
-    })
-})
 
-//show newCode
-app.get('/newCode', (req, res) =>{
-    res.render('newCode.ejs')
-})
-
-// //post create codee
-app.post('/code', (req, res)=>{
-    Code.create(req.body, (error, createdCode) =>{
-        if(error) {
-            res.send(error)
-        } else {
-            res.redirect('/code')
-        }
-    })
-})
-
-
-    ///code show
-    app.get('/code/:id', (req, res)=>{
-        Code.findById(req.params.id, (err, foundCode)=>{
-            res.render('codeShow.ejs',{
-                code: foundCode
-            })
-        })
-    })
-
-    // delete
-    app.delete('/code/:id', (req, res)=>{
-        Code.findByIdAndRemove(req.params.id, (err, deletedCode)=>{
-            if (err) {
-                console.log(err)
-            } else {
-                res.redirect('/code')
-            }
-        })
-    })
-
-    //put code
-    app.put('/code/:id', (req, res)=>{
-        Post.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true },
-            (err,updatedCode) =>{
-                let codeId = req.params.id;
-                if (err) {
-                    console.log(err)
-                } else {
-                    res.redirect(`/code/${codeId}`)
-                }
-            }
-            )
-        })
         
         
         
