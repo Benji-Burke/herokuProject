@@ -26,7 +26,7 @@ app.use(express.static('public'))
 //Data
 //post 
 const PostController = require('./controllers/posts.js');
-app.use('/blogs', PostController);
+app.use('/blogs', PostController)
 
 //post codes
 const CodeController = require('./controllers/codes.js');
@@ -41,6 +41,14 @@ const usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
 
+// Routes
+//localhost: 3000
+
+app.get('/', (req, res) =>{
+    res.redirect('/blogs')
+
+  
+});
 
 
 //port
@@ -56,12 +64,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true},() =>{
 
 
 
-// Routes
-//localhost: 3000
-
-app.get('/', (req, res) =>{
-    res.redirect('/blogs');
-});
 
 
 //new page for codes

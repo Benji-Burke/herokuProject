@@ -21,9 +21,27 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/code">CODES</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/sessions">Log In</a>
-                </li>
+                <h1>
+                  <% if(currentUser) {%>
+                    welcome <%=currentUser.username%>
+                  
+                 <% } else { %>
+                  <!-- Welcome! -->
+              <%  } %>
+                </h1>
+
+                <% if (currentUser) {%>
+                  <li class="nav-item">
+                      <form action="/sessions?_method=DELETE" method="POST">
+                        <input type="submit" value="Logout">
+                      </form>
+                    </li>
+                    <%} else { %>
+
+                    
+                    <li><a class="nav-link" href="/sessions">Log In</a></li>
+                    <% } %>
+                  </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/users/new">Register</a>
                 </li>
@@ -54,8 +72,8 @@
                 <br />
                 <span>By: <span class="author-name"><%=post[i].author; %></span></span>
             </div>
-            <%  } %>
-        </div>
+          </div>
+          <%  } %>
         <br/><br/>
         <span class="recent-article">Recent</span>
         <hr/>

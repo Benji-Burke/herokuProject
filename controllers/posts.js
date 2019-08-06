@@ -7,9 +7,10 @@ const Post = require('../models/posts.js')
 router.get('/', (req, res)=> {
     Post.find({}, (error, allPosts) =>{
         res.render('index.ejs', {
-            post: allPosts
+            post: allPosts,
+          
+            currentUser: req.session.currentUser
         })
-        
     })
 })
 
