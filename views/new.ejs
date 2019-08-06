@@ -36,15 +36,28 @@
                   </form>
                 </div>
               </nav>
+
+
     <h1>Add a Post</h1>
+    <div class="container">
+        <div>
     <form action="/blogs" id="usrArticle" method="POST">
-        name: <input type="text" name="name"><br>
+        name: <input type="text" name="name">
         author: <input type="text" name="author">
         tags: <input type="text" name="tags">
-        <textarea name="content" form="usrArticle" id="textArea" placeholder="Enter Text Here..."></textarea>
+        date: <input type="text" name="date">
+        </div><br/>
+        <div class="form-group shadow-textarea">
+        <textarea class="form-control z-depth-1" rows="10" wrap="hard" name="content" form="usrArticle" id="textArea" placeholder="Enter Text Here..."></textarea>
+        </div>
         <input type="submit">
     </form>
+    </div>
 
+
+
+
+    
     
 </body>
 </html>

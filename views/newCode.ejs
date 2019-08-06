@@ -31,11 +31,16 @@
               </nav>
     
         <h1>Add Code!</h1>
-        <form action="/code" id="codeSnippit" method="POST">
-            code: <input type="text" name="code"><br>
-            <textarea name="content" form="codeSnippit" id="textArea" placeholder="Enter Code here..."></textarea>
+        <div class="container">
+          <div>
+        <form action="/code" id="codeSnippit" class="form-inline justify-content-center" method="POST">
+            code name: <input type="text" name="code">
+            </div><br>
+       <div class="form-group shadow-textarea">
+            <textarea class="form-control z-depth-1" rows="10" name="content" form="codeSnippit" id="textArea" placeholder="Enter Code here..."></textarea>
+            </div>
             <input type="submit">
         </form>
-    
+        </div>
 </body>
 </html>

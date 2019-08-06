@@ -1,5 +1,5 @@
 * {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 0;
 	padding: 0;
 	background-color: rgba(221, 208, 208, 0.781);
@@ -15,4 +15,11 @@
 .btn {
 	color: black;
 	outline-color: black;
+}
+
+#contentText {
+	overflow: hidden;
+	white-space: pre-wrap;
+	text-align: center;
+	
 }
