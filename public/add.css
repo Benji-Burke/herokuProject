@@ -23,3 +23,20 @@
 	text-align: center;
 	
 }
+
+/* .flex-container {
+} */
+.card {
+	margin-top: 20px;
+	margin-bottom: 7px;
+	border: 1px solid gray;
+	text-align: center;
+	/* */
+	display: flex;
+	width: 90%;
+	margin: auto;
+	flex-wrap: wrap;
+	flex-direction: row;
+	/* height: 400px; */
+	justify-content: space-evenly;
+}

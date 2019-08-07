@@ -6,7 +6,8 @@ const Code = require('../models/code.js')
 Ben.get('/',(req, res)=>{
     Code.find({}, (error, allCode) =>{
         res.render('code.ejs', {  
-            code: allCode
+            code: allCode,
+            currentUser: req.session.currentUser
         })
         
     })
@@ -14,7 +15,9 @@ Ben.get('/',(req, res)=>{
 
 //show newCode
 Ben.get('/newCode', (req, res) =>{
-    res.render('newCode.ejs')
+    res.render('newCode.ejs', {
+        currentUser: req.session.currentUser
+    })
 })
 
 // //post create codee
@@ -33,7 +36,8 @@ Ben.post('/', (req, res)=>{
     Ben.get('/:id', (req, res)=>{
         Code.findById(req.params.id, (err, foundCode)=>{
             res.render('codeShow.ejs',{
-                code: foundCode
+                code: foundCode,
+                currentUser: req.session.currentUser
             })
         })
     })

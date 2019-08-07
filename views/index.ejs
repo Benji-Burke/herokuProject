@@ -7,53 +7,9 @@
 </head>
 
 <body>    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-            <a class="navbar-brand" href="/blogs">Code Decoded</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarToggler">
-              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/blogs/new">POST <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/code">CODES</a>
-                </li>
-                <h1>
-                  <% if(currentUser) {%>
-                    welcome <%=currentUser.username%>
-                  
-                 <% } else { %>
-                  <!-- Welcome! -->
-              <%  } %>
-                </h1>
+    <% include partials/nav.ejs %>
 
-                <% if (currentUser) {%>
-                  <li class="nav-item">
-                      <form action="/sessions?_method=DELETE" method="POST">
-                        <input type="submit" value="Logout">
-                      </form>
-                    </li>
-                    <%} else { %>
-
-                    
-                    <li><a class="nav-link" href="/sessions">Log In</a></li>
-                    <% } %>
-                  </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/users/new">Register</a>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-          </nav>
-
-
+          <br/>
     <main role="main" class="container">
         <% for (let i =0; i < post.length; i++) { %>
 
@@ -62,7 +18,7 @@
 
         <div class="row">
             <div class="col-md-8">
-                <img class="img-responsive" width="100%" src="http://via.placeholder.com/800x500">
+                <img class="img-responsive" width="100%" src="https://www.setaswall.com/wp-content/uploads/2017/12/Beach-Resort-Wallpaper-37-800x500.jpg">
             </div>
             <div class="col-md-4">
                 <br />
@@ -143,7 +99,7 @@
     </main>
     <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
         <div class="footer-copyright py-3 text-center">
-            Copyright 2018: Code Decoded
+            Copyright 2019: Code Decoded
         </div>
 
     </footer>

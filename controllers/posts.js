@@ -18,7 +18,9 @@ router.get('/', (req, res)=> {
 
 // new page of posts add to show
 router.get('/new', (req, res)=>{
-    res.render('new.ejs')
+    res.render('new.ejs', {
+        currentUser: req.session.currentUser
+    })
 });
 
 
@@ -38,7 +40,8 @@ router.post('/', (req, res)=>{
 router.get('/:id', (req, res)=>{
     Post.findById(req.params.id, (err, foundPost) =>{
         res.render('show.ejs', {
-            post: foundPost
+            post: foundPost,
+            currentUser: req.session.currentUser
         })
     })
 })

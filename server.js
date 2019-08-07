@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const methodOverride = require('method-override');
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 
 //middleware
 app.use(express.urlencoded({extended: true}))
