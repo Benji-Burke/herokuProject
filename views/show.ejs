@@ -13,6 +13,7 @@
 
     <br/>
     <main class="container" role="main">
+        <article>
        <div class="d-inline bg-sucess"><h1> <%=post.name %></h1></div> <br>
     <%=post.tags %> <br>
     By: <%=post.author; %> <br>
@@ -21,9 +22,10 @@
     <div class="row justify-content-center " id="contentText" >
     
    
-  <div class="text-align text-left"><%-post.content; %></div>
+  <div class="text-align text-left" id="post"><%-post.content; %></div>
    
     </div>
+        </article>
     </main>
 
     <a href="/blogs/<%=post.id; %>/edit">Edit</a>

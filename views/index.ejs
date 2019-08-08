@@ -10,13 +10,15 @@
     <% include partials/nav.ejs %>
 
           <br/>
+         
     <main role="main" class="container">
         <% for (let i =0; i < post.length; i++) { %>
 
-        
+        <br>
      
 
         <div class="row">
+            
             <div class="col-md-8">
                 <img class="img-responsive" width="100%" src="https://www.setaswall.com/wp-content/uploads/2017/12/Beach-Resort-Wallpaper-37-800x500.jpg">
             </div>
@@ -28,9 +30,11 @@
                 <br />
                 <span>By: <span class="author-name"><%=post[i].author; %></span></span>
             </div>
+            <br/>
           </div>
+          <hr>
           <%  } %>
-        <br/><br/>
+        <br/><br/><br>
         <span class="recent-article">Recent</span>
         <hr/>
 

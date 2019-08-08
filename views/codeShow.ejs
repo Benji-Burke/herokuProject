@@ -10,17 +10,17 @@
   </head>
   <body>
     <% include partials/nav.ejs %>
-
+<section>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h1 class="card-title"><%=code.code %></h1>
         <br />
 
-        <p class="card-text"><code><%=code.content; %></code></p>
+        <p class="card-text"><code class="code-text"><%=code.content; %></code></p>
         <br />
       </div>
     </div>
-
+</section>
     <nav>
       <a href="/code">Back</a>
     </nav>

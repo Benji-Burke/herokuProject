@@ -60,20 +60,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true},() =>{
     console.log('we are connected YO')
 });
 
-
-
-
-
-
-
-
-//new page for codes
-
-
-        
-        
-        
-        
+  
         
         app.listen(PORT, () => {
             console.log('listening on ', PORT);

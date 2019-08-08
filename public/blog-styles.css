@@ -37,3 +37,7 @@
   text-decoration: underline;
   font-size: 0.8em;
 }
+
+#post {
+  justify-content: center;
+}

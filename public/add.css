@@ -2,7 +2,7 @@
     /* border: 1px solid red; */
     margin: 0;
 	padding: 0;
-	background-color: rgba(221, 208, 208, 0.781);
+	background-color: #6c757d
  
 }
 
@@ -10,6 +10,10 @@
 	text-align: center;
 	padding-top: 20px;
 	
+}
+
+.row {
+	margin: 30px 0px;
 }
 
 .btn {
@@ -39,4 +43,12 @@
 	flex-direction: row;
 	/* height: 400px; */
 	justify-content: space-evenly;
+}
+
+.card-title, .card-text, .card-link {
+	color: white;
+}
+
+.code-text {
+	color: white;
 }
