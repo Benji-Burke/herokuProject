@@ -25,11 +25,16 @@
 .sub-article-title {
   font-size: 1.5em;
   font-size: bold;
+ 
+}
+
+.main-article-title >a {
+  color: white;
 }
 
 .sub-article-category,
 .sub-article-date {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.123);
   font-size: 0.8em;
 }
 
