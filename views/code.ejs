@@ -14,8 +14,8 @@
            <a href="<%=code[i].id; %>"> <div class="card" style="width: 18rem;">
                 <div class="card-body">
                   
-                  <h5 class="card-title"><%= code[i].code; %></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><% code[i].code; %></h6>
+                  <h5 class="card-title"> <a href="/code/<%=code[i].id; %>" class="card-link"><%=code[i].code%></a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"> <a href="/code/<%=code[i].id; %>" class="card-link"><%=code[i].code%></a></h6>
                   <p class="card-text"><%= code[i].description%></p>
                   <a href="/code/<%=code[i].id; %>" class="card-link"><%=code[i].code%></a>
                   <!-- <a href="#" class="card-link">Another link</a> -->
